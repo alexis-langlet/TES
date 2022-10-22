@@ -3,14 +3,6 @@ function sendData() {
 
   XHR.addEventListener("load", function (event) {
     alert(event.target.responseText);
-
-    let snackbarContainer = document.querySelector("#demo-toast-example");
-    let showToastButton = document.querySelector("#demo-show-toast");
-    showToastButton.addEventListener("click", function () {
-      "use strict";
-      let data = { message: event.target.responseText };
-      snackbarContainer.MaterialSnackbar.showSnackbar(data);
-    });
   });
 
   XHR.addEventListener("error", function (event) {
@@ -19,12 +11,24 @@ function sendData() {
 
   let start = document.getElementById("start").value;
   let end = document.getElementById("end").value;
-  let username = document.getElementById("username").value;
-  let password = document.getElementById("password").value;
+
+  let username, password;
+  let token = document.getElementById("token");
+
+  // as specified in Redmine documentation, token can be passed as username with random password
+  if (token) {
+    username = token.value;
+    password = "password";
+  } else {
+    username = document.getElementById("username").value;
+    password = document.getElementById("password").value;
+  }
+
+  console.log(username);
 
   XHR.open(
     "POST",
-    `http://localhost:3030/form?start=${start}&end=${end}&username=${username}&password=${password}`
+    `http://localhost:3333/form?start=${start}&end=${end}&username=${username}&password=${password}`
   );
   XHR.send();
 }
