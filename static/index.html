@@ -29,13 +29,7 @@
       <main class="mdl-layout__content">
         <form id="form" action="" onsubmit="sendData(); return false;">
           <Authentication></Authentication>
-          <div>
-            <label for="start">Start date:</label>
-            <input type="date" id="start" name="start" required />
-
-            <label for="end">End date:</label>
-            <input type="date" id="end" name="end" required />
-          </div>
+          <Date_picker></Date_picker>
 
           <button
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
@@ -43,10 +37,6 @@
             Submit
           </button>
         </form>
-        <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-          <div class="mdl-snackbar__text"></div>
-          <button class="mdl-snackbar__action" type="button"></button>
-        </div>
       </main>
     </div>
 
@@ -55,6 +45,7 @@
 
     <!-- Import Components -->
     <script src="./components/authentication.js"></script>
+    <script src="./components/datePicker.js"></script>
 
     <!-- Mount App -->
     <script>
